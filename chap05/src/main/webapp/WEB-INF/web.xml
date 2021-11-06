@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <!-- 
+  	# web.xml
+  	
+  	- webApplication Deployment Descriptor
+  	- 톰캣에서 현재 웹 애플리케이션에 대한 여러가지 설정을 전달할 수 있다.
+  	- 웹 서버 프로그램이 실행될 때마다 톰캣이 이 설정파일을 초기화에 사용한다
+  
+  	# welcome-file-list
+  	
+  	-웰컴 파일이란 디렉토리의 기본 웹 페이지이다.
+  	클라이언트가 서블릿 이름을 생략하고 디렉토리까지만 지정해서 요청한다면 
+  	웹 서버는 해당 디렉토리에서 웰컴 파일을 찾아서 응답한다.
+  	- ContextRoot로 접속한 사용자에게 보여줄 페이지를 설정한다. (uri없어도 페이지 들어가짐)
+  	 ( ContextRoot: 해당 프로젝트의 root 경로 ex> /chap05/, /chap04/, / )
+  	- web.xml에서 사용하는 경로는 webapp(WebContent)에서 시작한다.
+  	
+  	#WEB-INF 폴더
+  	
+  	- WEB-INF 폴더에 있는 웹 페이지들은 폴더 경로를 통해 직접 접속할 수 없다
+  	- 반드시 web.xml 또는 포워드(또는 include)를 이용해 연결되어야 한다
+  	- web.xml의 URL 매핑 기능을 WEB-INF 폴더와 함께 사용하면
+  	  URL과 실제 파일이 위치하고 있는 경로를 별개의 것으로 취급하여 사용할 수 있다
+  	- 장점 : 실제 프로젝트 구조를 들키지 않을 수 있다. 확장자를 URI에서 제거할 수 있다.
+  	- 단점 : 매핑 없이는 절대로 직접 접근할 수 없다.
+   -->
+
+  <display-name>chap05</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>/WEB-INF/default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- web.xml을 고치면 서버를 무조건 재시작해야지 제대로 실행됨 -->
+  
+  <!-- 원하는 URL과 JSP페이지 또는 서블릿을 매핑 시키기 -->
+  
+  <!-- 
+  		# <servlet>을 이용해 web.xml에 사용할 JSP파일 또는 서블릿을 등록할 수 있다. 
+  		
+  		<servlet-name> : 사용할 서블릿의 이름 (jsp도 서블릿)
+  		<jsp-file> : 실제 jsp 파일의 위치
+  
+  -->
+  <servlet>
+  		<servlet-name>cafe_home</servlet-name>
+  		<jsp-file>/WEB-INF/cafe/home.jsp</jsp-file>
+  </servlet>
+  
+  <servlet>
+  		<servlet-name>cafe_config</servlet-name>
+  		<jsp-file>/WEB-INF/cafe/config.jsp</jsp-file>
+  </servlet>
+  
+  <servlet>
+  		<servlet-name>cafe_create</servlet-name>
+  		<jsp-file>chap05.cafe.controller.CreateCafeController</jsp-file>
+  </servlet>
+  
+  <servlet>
+  		<servlet-name>blog_home</servlet-name>
+  		<servlet-class>chap05.blog.controller.BlogHomeController</servlet-class>
+  </servlet>
+  
+  <!-- 
+  		# <servlet-mapping>을 통해 등록되어 있는 서블릿들을 원하는 URL과 매핑시킬 수 있다
+  		알아서 컨텍스트 루트는 추가됨
+  		
+  		<servlet-name> : 등록되어 있는 서블릿 이름들 중 사용할 서블릿 이름을 선택
+  		<url-pattern> : 어떤 url로 접속했을 때 선택한 서블릿으로 연결할지 설정
+  		
+  		※ url-pattern에는 *를 사용할 수 있다.
+  		※ 하나의 서블릿에 여러개의 url이 매핑될 수 있다.
+   -->
+   
+   <servlet-mapping>
+   		<servlet-name>cafe_home</servlet-name>
+   		<url-pattern>*.cafe</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+   		<servlet-name>cafe_home</servlet-name>
+   		<url-pattern>/cafe/*</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+   		<servlet-name>cafe_home</servlet-name>
+   		<url-pattern>/cafe</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+   		<servlet-name>blog_home</servlet-name>
+   		<url-pattern>/blog/</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+   		<servlet-name>cafe_config</servlet-name>
+   		<url-pattern>/config/</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+   		<servlet-name>cafe_create</servlet-name>
+   		<url-pattern>/create/</url-pattern>
+   </servlet-mapping>
+  
+</web-app>
+
