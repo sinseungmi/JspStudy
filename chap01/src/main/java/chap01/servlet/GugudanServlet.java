@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /*
- * .jsp -> ¹ø¿ª -> .java(Servlet) -> compile -> 
- * 		.class(¹ÙÀÌÆ® ÄÚµå,ÀÚ¹Ù °¡»ó ¸Ó½ÅÀÌ ½ÇÇàÇÒ ¼ö ÀÖ´Â ÇüÅÂ) »óÅÂ·Î tomcat¿¡ ÀûÀçµÊ 
+ * .jsp -> ë²ˆì—­ -> .java(Servlet) -> compile -> 
+ * 		.class(ë°”ì´íŠ¸ ì½”ë“œ,ìë°” ê°€ìƒ ë¨¸ì‹ ì´ ì‹¤í–‰í•  ìˆ˜ ìˆëŠ” í˜•íƒœ) ìƒíƒœë¡œ tomcatì— ì ì¬ë¨ 
  * 
  * */
 
@@ -25,13 +25,13 @@ public class GugudanServlet extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		//<%@ %>´Â ÃÊ±âÈ­ ÀÚ¸®¿¡ ÀÖ´Ù
+		//<%@ %>ëŠ” ì´ˆê¸°í™” ìë¦¬ì— ìˆë‹¤
 	}
 	
 	
 
-	// /chap01/gugudanÀ¸·Î Á¢¼ÓÇÑ »ç¿ëÀÚ¿¡°Ô ¸ÚÀÖ´Â 
-	//±¸±¸´Ü Å×ÀÌºíÀ» ÀÀ´äÇÏ´Â ¼­ºí¸´À» ¸¸µé¾î º¸¼¼¿ä
+	// /chap01/gugudanìœ¼ë¡œ ì ‘ì†í•œ ì‚¬ìš©ìì—ê²Œ ë©‹ìˆëŠ” 
+	//êµ¬êµ¬ë‹¨ í…Œì´ë¸”ì„ ì‘ë‹µí•˜ëŠ” ì„œë¸”ë¦¿ì„ ë§Œë“¤ì–´ ë³´ì„¸ìš”
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

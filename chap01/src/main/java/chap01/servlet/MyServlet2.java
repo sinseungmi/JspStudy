@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Myservlet") //¿©±â´Ù Àû¾î³õÀº °Ç ÅèÄ¹ÀÌ ½Ï ±Ü¾î¼­ µî·ÏÇÑ´Ù
+@WebServlet("/Myservlet") //ì—¬ê¸°ë‹¤ ì ì–´ë†“ì€ ê±´ í†°ìº£ì´ ì‹¹ ê¸ì–´ì„œ ë“±ë¡í•œë‹¤
 public class MyServlet2 extends HttpServlet{
 	
-	//doGet() : Get ¹æ½Ä ¿äÃ»ÀÌ ¼­ºí¸´À¸·Î µµÂøÇßÀ» ¶§ ½ÇÇàµÇ´Â Äİ¹é ¸Ş¼­µå
+	//doGet() : Get ë°©ì‹ ìš”ì²­ì´ ì„œë¸”ë¦¿ìœ¼ë¡œ ë„ì°©í–ˆì„ ë•Œ ì‹¤í–‰ë˜ëŠ” ì½œë°± ë©”ì„œë“œ
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		resp.setCharacterEncoding("EUC-KR");  //ÀÎÄÚµùÇØ¾ß ÇÑ±Û ¾È±úÁü
-		resp.getWriter().print("<h1>Servlet2¿¡ ¿À½Å °ÍÀ» È¯¿µÇÕ´Ï´Ù.</h1>");
+		resp.setCharacterEncoding("EUC-KR");  //ì¸ì½”ë”©í•´ì•¼ í•œê¸€ ì•ˆê¹¨ì§
+		resp.getWriter().print("<h1>Servlet2ì— ì˜¤ì‹  ê²ƒì„ í™˜ì˜í•©ë‹ˆë‹¤.</h1>");
 	}
 }
