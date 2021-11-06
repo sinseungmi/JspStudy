@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>chap06</display-name>
+	
+	<servlet>
+		<servlet-name>main</servlet-name>
+		<servlet-class>chap06.main.controller.MainPage</servlet-class>
+	</servlet>  
+	
+	<servlet>
+		<servlet-name>add_item_index</servlet-name>
+		<servlet-class>chap06.admin.controller.AddItemIndex</servlet-class>
+	</servlet>  
+	
+	<servlet>
+		<servlet-name>add_item_detail</servlet-name>
+		<servlet-class>chap06.admin.controller.AddItemDetail</servlet-class>
+	</servlet>  
+	
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>add_item_index</servlet-name>
+		<url-pattern>/admin/addItem/index</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>add_item_detail</servlet-name>
+		<url-pattern>/admin/addItem/detail</url-pattern>
+	</servlet-mapping>
+
+</web-app>
