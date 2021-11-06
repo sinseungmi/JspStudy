@@ -1,0 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+jspf는 jsp로 컴파일 안하게끔! 태그들끼리 모으고~변수끼리모으고~
+<%
+
+	int a = 10; b = 11; c = 12;
+%>
