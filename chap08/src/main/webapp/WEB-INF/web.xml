@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <!-- 
+      # 초기화 파라미터 (Init Parameter)
+         - 서블릿을 생성하고 초기화할 때, 즉 init()을 호출할때 서블릿 컨테이너가 서블릿에 전달하는 데이터이다.
+         - 톰캣을 구동할 때(서버를 시작할 때) 해당 서버 프로그램에서 사용할 변수들을 초기화 하는 것
+         - <context-param>에 등록하는 초기화 파라미터는 모든 서블릿에서 사용할 수 있다
+         - 각 <servlet>에 등록하는 초기화 파라미터는 해당 서블릿에서만 사용할 수 있다
+         
+         <context-param>은 전역변수 같은 것
+    -->
+    
+    <context-param> 
+         <param-name>user</param-name>
+        <param-value>java1</param-value>
+   </context-param>
+   
+    <context-param>
+         <param-name>encoding</param-name>
+        <param-value>EUC-KR</param-value>
+   </context-param>
+    
+    <servlet>
+    	<servlet-name>dispatcher</servlet-name>
+    	<servlet-class>chap08.servlet.DispatcherServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+       <servlet-name>servlet_a</servlet-name>
+       <servlet-class>chap08.servlet.ServletA</servlet-class>
+       <init-param>
+          <param-name>name</param-name>
+          <param-value>철수</param-value>
+       </init-param>
+       <init-param>
+          <param-name>TEL</param-name>
+          <param-value>010-1234-1234</param-value>
+       </init-param>
+       
+    </servlet>
+    
+    
+    <servlet-mapping>
+       <servlet-name>servlet_a</servlet-name>
+       <url-pattern>/servlet_a</url-pattern>
+    </servlet-mapping>
+    
+    <!-- 
+    	# url-pattern '/'
+    	
+    	(ex : http://localhost:8080/chap08/sjkdshfksjh 이렇게 뒤에 아무거나 넣었을 때 '/'일로 온다
+    	- web.xml의 매핑 설정에서 걸리지 않은 모든 url에 관한 매핑이다.
+    	- 즉, url-pattern의 else 역할이다.
+    	- 이를 이용해 하나의 서블릿에서 모든 매핑을 진행할 수도 있다.
+    
+     -->
+    
+    <servlet-mapping>
+       <servlet-name>dispatcher</servlet-name>
+       <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
