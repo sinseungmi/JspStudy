@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04_속성</title>
+</head>
+<body>
+                    <!--함수사용 가능-->
+    <!--onmouseout : 올렸던 마우스가 나갔을 경우, onmouseout 이벤트를 발생시켜,
+    해당 코드를 실행해라라는 속성-->   <!--this는 window..-->
+    <h3 onmouseout="onmouseoutBehave(this)"
+    onclick="onclickBehave(this)"># 속성(Attribute)</h3>
+    
+    <p style="background-color: black; color: white; padding: 30px;" 
+    title="속성에 대한 설명입니다.">
+        -모든 요소는 속성을 가질 수 있다 <br>
+        -속성은 해당 요소의 여는 태그에 정의해야한다 <br>
+        -속성을 통해 해당 요소의 추가적인 정보를 묘사할 수 있다 <br>
+        -대부분의 속성은 속성 이름과 속성 값이 짝을 이룬다 <br>
+        -ex : title 속성은 해당 요소에 마우스를 올리면 어떤 것이
+        나올지 추가적으로 설명한다 <br>
+    </p>
+
+    <!--script 태그 내부의 영역은 자바스크립트의 영역이 된다-->
+    <script>
+        /*
+        JavaScript : 웹 브라우저(크롬 등)가 해석하는 프로그래밍 언어
+                     웹 브라우저를 직접 컨트롤하는 기능이 많이 있다.
+        */
+        function onmouseoutBehave(e) {
+            e.style.backgroundColor = "white";
+            e.style.color = "black";
+        }
+        function onclickBehave(e) {
+            e.style.backgroundColor = "blue";
+            e.style.color = "white";
+        }
+    </script>
+
+    <a href="03_요소.html">이전으로</a> <br>
+    <a href="05_링크.html">다음으로</a>
+
+</body>
+</html>

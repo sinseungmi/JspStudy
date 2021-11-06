@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07_테이블</title>
+    <style>
+       /* th {
+            font-weight: normal;
+            background-color: saddlebrown;
+            color: white;
+        }
+        td {
+            background-color: skyblue;
+            color: white;
+        } */
+
+        table,th,td {
+            border-collapse:collapse;
+        }
+    </style>
+</head>
+<body>
+
+    <h3># 웹 페이지에 표 출력하기</h3>
+
+    <p>
+        &lt;table&gt; : 표의 범위를 설정하는 태그 <br>
+        &lt;tr&gt; : table row, 표에 한 줄을 추가하는 태그 <br>
+        &lt;th&gt; : table header, 해당 줄에 제목 칸을 추가하는 태그 <br>
+        &lt;td&gt; : table data, 해당 줄에 데이터 칸을 추가하는 태그 <br>
+    </p>
+
+    <table border="3">
+        <tr>
+            <th>이름</th>
+            <!--colspan="2" : 이 칸은 두 열을 차지하는 칸이 된다-->
+            <th colspan="2">Tel</th>
+            <th>Email</th>
+            <th>profile</th>
+        </tr>
+        <tr>
+            <!--rowspan="2" : 이 칸은 두 행을 차지하는 칸이 된다-->
+            <td rowspan="2">빌 게이츠</td>
+            <td>010-1234-1234</td>
+            <td>010-1234-1234</td>
+            <td>bill@microsoft.com</td>
+            <td><img src="../assets/image/IMG_1198.jpeg" width="100" alt=""></td>
+        </tr>
+        <tr>
+            <td>010-1234-1234</td>
+            <td>010-1234-1234</td>
+            <td>bill@microsoft.com</td>
+            <td><img src="../assets/image/IMG_1198.jpeg" width="100" alt=""></td>
+        </tr>
+        <tr>
+            <td>빌 게이츠</td>
+            <td>010-1234-1234</td>
+            <td>010-1234-1234</td>
+            <td>bill@microsoft.com</td>
+            <td><img src="../assets/image/IMG_1198.jpeg" width="100" alt=""></td>
+        </tr>
+    </table> 
+    <br>
+
+    <hr> 
+    <br>
+
+    <table border="1">
+        <tr>
+            <th rowspan="11">TCB</th>
+            <th>Order no:</th>
+            <td colspan="3">#ABC001</td>
+        </tr>
+        <tr>
+            <th>Order Date:</th>
+            <td colspan="3">23-Mar-2016</td>
+        </tr>
+        <tr>
+            <th colspan="4">Customer</th>
+        </tr>
+        <tr>
+            <th>Name:</th>
+            <td colspan="3">John Papas</td>
+        </tr>
+        <tr>
+            <th>Address:</th>
+            <td colspan="3">Independence Day 5th str, 11511</td>
+        </tr>
+        <tr>
+            <th colspan="4">Order Details</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Of Mice and Men</td>
+            <td>Book</td>
+            <td>10.00€</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Les Miserables</td>
+            <td>Book</td>
+            <td>12.00€</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Game of Thrones - S01</td>
+            <td>DVD</td>
+            <td>50.00€</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Samsung Galaxy</td>
+            <td>Mobile Phone</td>
+            <td>200.00€</td>
+        </tr>
+        <tr>
+            <th colspan="3">Total:</th>
+            <td>272.00€</td>
+        </tr> 
+
+    </table> <br> <br>
+
+    <hr>
+    <br>
+
+    <table border="1">
+        <tr>
+            <td rowspan="2">A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>E&nbsp;&nbsp;&nbsp;</th>
+            <td rowspan="2">G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td rowspan="2">J&nbsp;&nbsp;</td>
+            <td colspan="2">N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td>F&nbsp;&nbsp;&nbsp;</td>
+            <td>O&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;</td>
+        </tr>
+        <tr>
+            <td rowspan="3" colspan="2">B</td>
+            <td>H</td>
+            <td colspan="2">&nbsp;</td>
+            <td rowspan="5">P</td>
+        </tr>
+        <tr>
+            <td>I</td>
+            <td rowspan="3" colspan="2">K</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="2">C</td>
+            <td rowspan="2" colspan="2"></td>
+        </tr>
+        <tr>
+            <td>L</td>
+            <td>M</td>
+        </tr>
+
+    </table>
+    <br> <br>
+
+
+    
+</body>
+</html>
