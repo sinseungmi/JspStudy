@@ -12,8 +12,8 @@ public class BlogHomeController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("[info]" + req.getRequestURI() + "·Î"
-				+ req.getMethod() + "¹æ½Ä ¿äÃ»ÀÌ ¹ß»ıÇÔ");
+		System.out.println("[info]" + req.getRequestURI() + "ë¡œ"
+				+ req.getMethod() + "ë°©ì‹ ìš”ì²­ì´ ë°œìƒí•¨");
 		
 		req.getRequestDispatcher("/WEB-INF/blog/home.jsp").forward(req, resp);
 		

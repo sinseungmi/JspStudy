@@ -12,8 +12,8 @@ public class CafeConfigController extends HttpServlet{
 		@Override
 		protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			
-			System.out.println("[info]" + req.getRequestURI() + "로"
-					+ req.getMethod() + "방식 요청이 발생함");
+			System.out.println("[info]" + req.getRequestURI()
+					+ req.getMethod());
 			
 			req.getRequestDispatcher("/WEB-INF/cafe/config.jsp").forward(req, resp);
 		}
