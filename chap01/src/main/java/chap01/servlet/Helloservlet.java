@@ -12,78 +12,78 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /*
- * # À¥ »çÀÌÆ®°¡ Å¬¶óÀÌ¾ðÆ®¿¡°Ô º¸¿©Áö´Â °úÁ¤ (JSP)
+ * # ì›¹ ì‚¬ì´íŠ¸ê°€ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë³´ì—¬ì§€ëŠ” ê³¼ì • (JSP)
  * 
- * È£½ºÆ® : À¥ ÆäÀÌÁö¸¦ °¡Áö°í ÀÖ´Â À¥ ÆäÀÌÁöÀÇ ÁÖÀÎ
- * Å¬¶óÀÌ¾ðÆ® : À¥ ¼­¹ö¿¡ Á¢¼ÓÇÏ´Â »ç¿ëÀÚ
+ * í˜¸ìŠ¤íŠ¸ : ì›¹ íŽ˜ì´ì§€ë¥¼ ê°€ì§€ê³  ìžˆëŠ” ì›¹ íŽ˜ì´ì§€ì˜ ì£¼ì¸
+ * í´ë¼ì´ì–¸íŠ¸ : ì›¹ ì„œë²„ì— ì ‘ì†í•˜ëŠ” ì‚¬ìš©ìž
  * 
- * (1) Å¬¶óÀÌ¾ðÆ®°¡ È£½ºÆ®¿¡°Ô À¥ ÆäÀÌÁö¸¦ º¸¿©´Þ¶ó°í ¿äÃ»ÇÑ´Ù.
- *		¿äÃ»ÇÒ ¶§ ¿øÇÏ´Â ÆäÀÌÁö°¡ ¹«¾ùÀÎÁö À¥ ÁÖ¼Ò(URL)¿¡ Àû¾î¼­ º¸³½´Ù.
+ * (1) í´ë¼ì´ì–¸íŠ¸ê°€ í˜¸ìŠ¤íŠ¸ì—ê²Œ ì›¹ íŽ˜ì´ì§€ë¥¼ ë³´ì—¬ë‹¬ë¼ê³  ìš”ì²­í•œë‹¤.
+ *		ìš”ì²­í•  ë•Œ ì›í•˜ëŠ” íŽ˜ì´ì§€ê°€ ë¬´ì—‡ì¸ì§€ ì›¹ ì£¼ì†Œ(URL)ì— ì ì–´ì„œ ë³´ë‚¸ë‹¤.
  * 
  * 		http://naver.com/news
  * 
- * 		htt:// - Åë½Ä ¹æ½Ä (http, https, ftp ...)
- * 		naver.com - À¥ ¼­¹ö ÄÄÇ»ÅÍÀÇ IPÁÖ¼Ò (¶Ç´Â µµ¸ÞÀÎ)
- * 		/news - »ç¿ëÀÚ°¡ ÇØ´ç À¥ ¼­¹ö¿¡¼­ Æ¯º°È÷ ¿øÇÏ´Â ÀÚ¿ø(À¥ÆäÀÌÁö ¶Ç´Â ±×¸² µî...)
+ * 		htt:// - í†µì‹ ë°©ì‹ (http, https, ftp ...)
+ * 		naver.com - ì›¹ ì„œë²„ ì»´í“¨í„°ì˜ IPì£¼ì†Œ (ë˜ëŠ” ë„ë©”ì¸)
+ * 		/news - ì‚¬ìš©ìžê°€ í•´ë‹¹ ì›¹ ì„œë²„ì—ì„œ íŠ¹ë³„ížˆ ì›í•˜ëŠ” ìžì›(ì›¹íŽ˜ì´ì§€ ë˜ëŠ” ê·¸ë¦¼ ë“±...)
  * 
- * (2) »ç¿ëÀÚ ¿äÃ»ÀÌ Apache - Tomcat¿¡ µµÂøÇÑ´Ù
- * 		Apache - Tomcat¿¡ µî·ÏµÇ¾î ÀÖ´Â URL ¸ÅÇÎµé Áß ÀÏÄ¡ÇÏ´Â ÀÚ¿øÀ» Ã£´Â´Ù
+ * (2) ì‚¬ìš©ìž ìš”ì²­ì´ Apache - Tomcatì— ë„ì°©í•œë‹¤
+ * 		Apache - Tomcatì— ë“±ë¡ë˜ì–´ ìžˆëŠ” URL ë§¤í•‘ë“¤ ì¤‘ ì¼ì¹˜í•˜ëŠ” ìžì›ì„ ì°¾ëŠ”ë‹¤
  * 		
- * 		µî·ÏÇÒ ¼ö ÀÖ´Â ÀÚ¿øµé - .jsp, .java(Servlet), .html, 
- * 							±âÅ¸ ÀÚ¿øµé(.js, .css, .jpg..)
+ * 		ë“±ë¡í•  ìˆ˜ ìžˆëŠ” ìžì›ë“¤ - .jsp, .java(Servlet), .html, 
+ * 							ê¸°íƒ€ ìžì›ë“¤(.js, .css, .jpg..)
  * 
- * 		µî·Ï ¹æ¹ýµé - @WebServlet ¾î³ëÅ×ÀÌ¼Ç, webapp(WebContent) ¹Ø¿¡ Á÷Á¢ ³Ö±â..µî
+ * 		ë“±ë¡ ë°©ë²•ë“¤ - @WebServlet ì–´ë…¸í…Œì´ì…˜, webapp(WebContent) ë°‘ì— ì§ì ‘ ë„£ê¸°..ë“±
  * 
- * (3) µî·ÏµÈ ÀÚ¿øµé Áß »ç¿ëÀÚÀÇ ¿äÃ»¿¡ µû¶ó ´Ù¸¥ °á°úµéÀÌ ³ª¿À´Â ÆäÀÌÁö¸¦ µ¿Àû À¥ ÆäÀÌÁö¶ó°íÇÑ´Ù
+ * (3) ë“±ë¡ëœ ìžì›ë“¤ ì¤‘ ì‚¬ìš©ìžì˜ ìš”ì²­ì— ë”°ë¼ ë‹¤ë¥¸ ê²°ê³¼ë“¤ì´ ë‚˜ì˜¤ëŠ” íŽ˜ì´ì§€ë¥¼ ë™ì  ì›¹ íŽ˜ì´ì§€ë¼ê³ í•œë‹¤
  * 
- * (4) Å¬¶óÀÌ¾ðÆ®ÀÇ ¿äÃ»ÀÌ ¿Ã¹Ù¸¥ ¿äÃ»ÀÌ¾ú´Ù¸é (ÅèÄ¹¿¡ µî·ÏµÈ ÀÚ¿øÀÌ ¸Â´Ù¸é)
- * 		ÇØ´ç ÀÚ¿øÀ» ¸¸µé¾î¼­(servlet ÇÁ·Î±×·¥ ½ÇÇà) ÀÀ´äÇÑ´Ù. 
- * 		(¶Ç´Â ÀÌ¹Ì ÀÖ´Â ÀÚ¿øÀ» ±×´ë·Î ÀÀ´äÇÑ´Ù, µ¿Àû À¥ ÆäÀÌÁö°¡ ¾Æ´Ñ ÀÚ¿øµé)
+ * (4) í´ë¼ì´ì–¸íŠ¸ì˜ ìš”ì²­ì´ ì˜¬ë°”ë¥¸ ìš”ì²­ì´ì—ˆë‹¤ë©´ (í†°ìº£ì— ë“±ë¡ëœ ìžì›ì´ ë§žë‹¤ë©´)
+ * 		í•´ë‹¹ ìžì›ì„ ë§Œë“¤ì–´ì„œ(servlet í”„ë¡œê·¸ëž¨ ì‹¤í–‰) ì‘ë‹µí•œë‹¤. 
+ * 		(ë˜ëŠ” ì´ë¯¸ ìžˆëŠ” ìžì›ì„ ê·¸ëŒ€ë¡œ ì‘ë‹µí•œë‹¤, ë™ì  ì›¹ íŽ˜ì´ì§€ê°€ ì•„ë‹Œ ìžì›ë“¤)
  * 
- * (5) À¥ ¼­¹ö¿¡¼­ ÀÀ´äÇÑ ÀÚ¿øÀÌ ¿äÃ» º¸³Â´ø Å¬¶óÀÌ¾ðÆ®ÀÇ À¥ ºê¶ó¿ìÀú¿¡ µµÂøÇÑ´Ù
- * 		À¥ ºê¶ó¿ìÀú´Â ÀÀ´ä ¹ÞÀº ³»¿ëÀ» ÇØ¼®ÇÏ¿© »ç¿ëÀÚ¿¡°Ô º¸¿©ÁØ´Ù.
+ * (5) ì›¹ ì„œë²„ì—ì„œ ì‘ë‹µí•œ ìžì›ì´ ìš”ì²­ ë³´ëƒˆë˜ í´ë¼ì´ì–¸íŠ¸ì˜ ì›¹ ë¸Œë¼ìš°ì €ì— ë„ì°©í•œë‹¤
+ * 		ì›¹ ë¸Œë¼ìš°ì €ëŠ” ì‘ë‹µ ë°›ì€ ë‚´ìš©ì„ í•´ì„í•˜ì—¬ ì‚¬ìš©ìžì—ê²Œ ë³´ì—¬ì¤€ë‹¤.
  * */
 
 /*
- * HttpServlet Å¬·¡½º¿¡¼­ »ç¿ëÀÚ ¿äÃ»À» Ã³¸®ÇÏ´Â doGet/doPost ¸Þ¼­µå´Â ¸ðµÎ 
- * HttpServletRequest¿Í HttpServletResponse °´Ã¼¸¦ ¸Å°³º¯¼ö·Î °¡Áö°í ÀÖ´Ù.
- * HttpServletRequest¿Í HttpServletResponse °´Ã¼´Â ¼­ºí¸´°ú Å¬¶óÀÌ¾ðÆ® »çÀÌ¸¦ ¿¬°áÇØÁÖ´Â Áß¿äÇÑ °´Ã¼µé ÀÌ´Ù.
+ * HttpServlet í´ëž˜ìŠ¤ì—ì„œ ì‚¬ìš©ìž ìš”ì²­ì„ ì²˜ë¦¬í•˜ëŠ” doGet/doPost ë©”ì„œë“œëŠ” ëª¨ë‘ 
+ * HttpServletRequestì™€ HttpServletResponse ê°ì²´ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ê°€ì§€ê³  ìžˆë‹¤.
+ * HttpServletRequestì™€ HttpServletResponse ê°ì²´ëŠ” ì„œë¸”ë¦¿ê³¼ í´ë¼ì´ì–¸íŠ¸ ì‚¬ì´ë¥¼ ì—°ê²°í•´ì£¼ëŠ” ì¤‘ìš”í•œ ê°ì²´ë“¤ ì´ë‹¤.
  * 
  * */
 
 
-// ÀÌ ¼­ºí¸´À¸·Î Á¢¼ÓÇÏ·Á¸é ¾î¶² URL·Î Á¢¼ÓÇØ¾ßÇÏ´ÂÁö ¼³Á¤ÇÏ´Â ¾î³ëÅ×ÀÌ¼Ç (/chap01/hello)
+// ì´ ì„œë¸”ë¦¿ìœ¼ë¡œ ì ‘ì†í•˜ë ¤ë©´ ì–´ë–¤ URLë¡œ ì ‘ì†í•´ì•¼í•˜ëŠ”ì§€ ì„¤ì •í•˜ëŠ” ì–´ë…¸í…Œì´ì…˜ (/chap01/hello)
 @WebServlet("/hello")
 public class Helloservlet extends HttpServlet {
-   //¿äÃ»ÀÌ µé¾î¿À¸é ÀÀ´äÀ» »ý¼ºÇÏ´Â°Ô ¼­ºí¸´
+   //ìš”ì²­ì´ ë“¤ì–´ì˜¤ë©´ ì‘ë‹µì„ ìƒì„±í•˜ëŠ”ê²Œ ì„œë¸”ë¦¿
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       
-      // HttpServletRequest : »ç¿ëÀÚ°¡ º¸³½ ¸ðµç ¿äÃ» Á¤º¸¸¦ ´ãÀ» ¼ö ÀÖ´Â Å¬·¡½º
-      // HttpServletResponse: ¹ÞÀº ¿äÃ»À» ÅëÇØ ¾Ë¸ÂÀº ÀÀ´äÀ» ´ã¾Æ³õÀ» ¼ö ÀÖ´Â Å¬·¡½º
+      // HttpServletRequest : ì‚¬ìš©ìžê°€ ë³´ë‚¸ ëª¨ë“  ìš”ì²­ ì •ë³´ë¥¼ ë‹´ì„ ìˆ˜ ìžˆëŠ” í´ëž˜ìŠ¤
+      // HttpServletResponse: ë°›ì€ ìš”ì²­ì„ í†µí•´ ì•Œë§žì€ ì‘ë‹µì„ ë‹´ì•„ë†“ì„ ìˆ˜ ìžˆëŠ” í´ëž˜ìŠ¤
       
 	  /*
-	   * ÀÀ´ä ½ºÆ®¸²¿¡ ÅØ½ºÆ®¸¦ ±â·ÏÇÏ´Â °Íµµ °¡´ÉÇÏ¸ç, ÀÌ ÀÛ¾÷À» ÇÏ±â À§ÇØ¼­ response.getWriter()¸¦ È£ÃâÇØ¾ß ÇÕ´Ï´Ù.
-	   * ½ºÆ®¸²¿¡´Â ¹ÙÀÌ³Ê¸® ±â¹ÝÀÇ ½ºÆ®¸²°ú ÅØ½ºÆ® ±â¹ÝÀÇ ½ºÆ®¸²ÀÌ ÀÖ½À´Ï´Ù.
-	   * º¸Åë ¹ÙÀÌ³Ê¸® ±â¹ÝÀÇ ½ºÆ®¸²Àº InputStream(ÀÔ·Â), OutputStrream(Ãâ·Â)ÀÌ¶ó´Â °ÍÀ¸·Î ³¡³ª°í,
-	   * ÅØ½ºÆ® ±â¹ÝÀÇ ½ºÆ®¸²Àº reader(ÀÔ·Â), Writer(Ãâ·Â)·Î ³¡³³´Ï´Ù.
+	   * ì‘ë‹µ ìŠ¤íŠ¸ë¦¼ì— í…ìŠ¤íŠ¸ë¥¼ ê¸°ë¡í•˜ëŠ” ê²ƒë„ ê°€ëŠ¥í•˜ë©°, ì´ ìž‘ì—…ì„ í•˜ê¸° ìœ„í•´ì„œ response.getWriter()ë¥¼ í˜¸ì¶œí•´ì•¼ í•©ë‹ˆë‹¤.
+	   * ìŠ¤íŠ¸ë¦¼ì—ëŠ” ë°”ì´ë„ˆë¦¬ ê¸°ë°˜ì˜ ìŠ¤íŠ¸ë¦¼ê³¼ í…ìŠ¤íŠ¸ ê¸°ë°˜ì˜ ìŠ¤íŠ¸ë¦¼ì´ ìžˆìŠµë‹ˆë‹¤.
+	   * ë³´í†µ ë°”ì´ë„ˆë¦¬ ê¸°ë°˜ì˜ ìŠ¤íŠ¸ë¦¼ì€ InputStream(ìž…ë ¥), OutputStrream(ì¶œë ¥)ì´ë¼ëŠ” ê²ƒìœ¼ë¡œ ëë‚˜ê³ ,
+	   * í…ìŠ¤íŠ¸ ê¸°ë°˜ì˜ ìŠ¤íŠ¸ë¦¼ì€ reader(ìž…ë ¥), Writer(ì¶œë ¥)ë¡œ ëë‚©ë‹ˆë‹¤.
 	   * 
 	   * 
-	   * ¸ÅÇÎ(mapping)ÀÌ¶õ?
-	   * : Url°æ·Î°¡ ³Ê¹« ±æ°í, º¸¾È¿¡ ³ëÃâµÇ¾î ÀÖ´Âµ¥, ÀÌ·¯ÇÑ °æ·Î¸¦ °£´ÜÇÏ°Ô Ç¥ÇöÇÏ´Â °Í ÀÔ´Ï´Ù.
+	   * ë§¤í•‘(mapping)ì´ëž€?
+	   * : Urlê²½ë¡œê°€ ë„ˆë¬´ ê¸¸ê³ , ë³´ì•ˆì— ë…¸ì¶œë˜ì–´ ìžˆëŠ”ë°, ì´ëŸ¬í•œ ê²½ë¡œë¥¼ ê°„ë‹¨í•˜ê²Œ í‘œí˜„í•˜ëŠ” ê²ƒ ìž…ë‹ˆë‹¤.
 	   * 
 	   * 
-	   * * ¾î³ëÅ×ÀÌ¼Ç : @ ¿Í ÇÔ²² ¾²ÀÎ °ÍÀ» ¾î³ëÅ×ÀÌ¼ÇÀÌ¶ó°í ÇÕ´Ï´Ù.
-	   * @WebServlet("/¸ÊÇÎ¸í")°ú °°ÀÌ javaÄÚµå¿¡ Á÷Á¢ ÀÔ·ÂÇÏ¿© ¸ÊÇÎÇÒ ¼ö ÀÖ½À´Ï´Ù.
+	   * * ì–´ë…¸í…Œì´ì…˜ : @ ì™€ í•¨ê»˜ ì“°ì¸ ê²ƒì„ ì–´ë…¸í…Œì´ì…˜ì´ë¼ê³  í•©ë‹ˆë‹¤.
+	   * @WebServlet("/ë§µí•‘ëª…")ê³¼ ê°™ì´ javaì½”ë“œì— ì§ì ‘ ìž…ë ¥í•˜ì—¬ ë§µí•‘í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 	   * 
 	   * 
-	   * ÅèÄ¹Àº ¾î³ëÅ×ÀÌ¼ÇÀ» È®ÀÎÇÏ¿© "ÇØ´ç ServletÀ¸·Î Á¢±ÙÇÏ±â À§ÇØ¼­´Â URL¿¡ /hello·Î Á¢±ÙÇÏ¸é µÈ´Ù"
-	   * ´Â ¸ÅÇÎÀ» ÇÕ´Ï´Ù
+	   * í†°ìº£ì€ ì–´ë…¸í…Œì´ì…˜ì„ í™•ì¸í•˜ì—¬ "í•´ë‹¹ Servletìœ¼ë¡œ ì ‘ê·¼í•˜ê¸° ìœ„í•´ì„œëŠ” URLì— /helloë¡œ ì ‘ê·¼í•˜ë©´ ëœë‹¤"
+	   * ëŠ” ë§¤í•‘ì„ í•©ë‹ˆë‹¤
 	   * 
 	   * */ 
 	   
 	   
-	  //resp°´Ã¼¿¡ ¾´´Ù
+	  //respê°ì²´ì— ì“´ë‹¤
       PrintWriter out = resp.getWriter();
       
       out.println("<html><head><title>Hello</title></head><body>");
