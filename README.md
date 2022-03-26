@@ -1,2 +1,7 @@
 # JspStudy
-> JSP 수업을 통해 학습한 내용 정리
+>
+> <br>
+>
+> **contextPath 설정** <br>
+> - spring request mapping uri 시작점 <br>
+> <c:set var="contextPath" value="${pageContext.request.contextPath }" />
